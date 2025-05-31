@@ -1,4 +1,4 @@
-# 🧪 Postman Board & List API Automation
+# Postman API Automation
 
 This project demonstrates API automation using Postman for the following flow:
 
