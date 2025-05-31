@@ -40,10 +40,13 @@ cd postman-api-automation-transmediainc
 
 ---
 
-### 2. Install Newman (if not already)
+### 2. Install Newman HTML Reporter (if not already)
 
 ```bash
 npm install -g newman
+```
+```bash
+npm install -g newman-reporter-html
 ```
 
 ---
