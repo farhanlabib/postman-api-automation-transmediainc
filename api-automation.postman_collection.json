@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "fc43182b-70fe-4823-8c8b-8b4703c26b25",
+		"name": "API Automation - transmediainc",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17186196",
+		"_collection_link": "https://ms-qa9.postman.co/workspace/10MS-QA-Workspace~5308cb33-3d16-4a2b-80f7-40f7a77479f1/collection/17186196-fc43182b-70fe-4823-8c8b-8b4703c26b25?action=share&source=collection_link&creator=17186196"
+	},
+	"item": [
+		{
+			"name": "Create Board",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let res = pm.response.json()",
+							"pm.test(\"Board Creation Successfully\", ()=>{",
+							"    pm.expect(pm.response.code).to.equal(201);",
+							"    pm.expect(res).to.have.property(\"id\")",
+							"})",
+							"",
+							"pm.collectionVariables.set(\"boardId\",res.id)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.9,en-US;q=0.8,bn;q=0.7"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"API Automation\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/boards",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"boards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let res = pm.response.json()",
+							"",
+							"pm.test(\"List Created Successfully\",()=>{",
+							"    pm.expect(pm.response.code).to.eql(201)",
+							"    pm.expect(res).to.have.property(\"id\")",
+							"})",
+							"",
+							"pm.collectionVariables.set(\"listId\",res.id)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.9,en-US;q=0.8,bn;q=0.7"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"boardId\": {{boardId}},\n    \"name\": \"List A\",\n    \"order\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/api/lists",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Delete List API\", () => {",
+							"    const status = pm.response.code;",
+							"",
+							"    if (status === 200) {",
+							"        pm.expect(true,\"List Deleted Successfully\").to.be.true;",
+							"    } else if (status === 404) {",
+							"        pm.expect.fail(\"List not found\");",
+							"    } else {",
+							"        pm.expect.fail(`Unexpected status code: ${status}`);",
+							"    }",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json, text/plain, */*"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.9,en-US;q=0.8,bn;q=0.7"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/api/lists/{{listId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"lists",
+						"{{listId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		},
+		{
+			"key": "boardId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "listId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
