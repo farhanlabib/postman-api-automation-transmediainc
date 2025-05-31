@@ -2,14 +2,14 @@
 
 This project demonstrates API automation using Postman for the following flow:
 
-1. ✅ **Create a new board**
-2. ✅ **Create a list under the newly created board**
-3. ✅ **Delete the list**
+1. **Create a new board**
+2. **Create a list under the newly created board**
+3. **Delete the list**
 
 
 ---
 
-## 📦 Collection Overview
+## Collection Overview
 
 | Request Name     | Method | Description                          |
 |------------------|--------|--------------------------------------|
@@ -19,7 +19,7 @@ This project demonstrates API automation using Postman for the following flow:
 
 ---
 
-## 📁 Files Included
+## Files Included
 
 | File                                        | Description                                 |
 |---------------------------------------------|---------------------------------------------|
@@ -29,9 +29,9 @@ This project demonstrates API automation using Postman for the following flow:
 
 ---
 
-## 🛠 How to Use
+## How to Use
 
-### 1. 📥 Export or Clone This Repo
+### 1. Export or Clone This Repo
 
 ```bash
 git clone https://github.com/farhanlabib/postman-api-automation-transmediainc.git
@@ -40,7 +40,7 @@ cd postman-api-automation-transmediainc
 
 ---
 
-### 2. 🧪 Install Newman (if not already)
+### 2. Install Newman (if not already)
 
 ```bash
 npm install -g newman
@@ -48,7 +48,7 @@ npm install -g newman
 
 ---
 
-### 3. 🚀 Run Collection and Generate Report
+### 3. Run Collection and Generate Report
 
 ```bash
 newman run board-automation.postman_collection.json \
@@ -75,19 +75,12 @@ The Postman collection uses **collection-level variables**:
 
 ---
 
-## ✅ Features & Best Practices
+## Features
 
-- 🔁 Fully automated API flow using chained requests
-- 🧩 Dynamic variables for boardId and listId
-- 🧪 Test scripts include `pm.expect()` assertions
-- ✅ Graceful handling of `200` and `404` scenarios
-- 🧼 Clean, modular collection structure
-
----
-
-## 📸 Sample Test Output
-
-![Newman Report Preview](https://user-images.githubusercontent.com/your-preview-image.png)
+- Fully automated API flow using chained requests
+- Dynamic variables for boardId and listId
+- Test scripts include `pm.expect()` assertions
+- Graceful handling of `200` and `404` scenarios
 
 ---
 
