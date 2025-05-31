@@ -54,7 +54,7 @@ npm install -g newman-reporter-html
 ### 3. Run Collection and Generate Report
 
 ```bash
-newman run board-automation.postman_collection.json \
+newman run api-automation.postman_collection.json \
   --reporters cli,html \
   --reporter-html-export newman-report.html
 ```
